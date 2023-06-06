@@ -1,0 +1,27 @@
+問題文
+x 軸の正の向きが右、y 軸の正の向きが上であるような xy 座標平面において、点 (a,b) を原点を中心として反時計回りに d 度回転させた点を求めてください。
+
+制約
+−1000≤a,b≤1000
+1≤d≤360
+入力はすべて整数
+
+問題：https://atcoder.jp/contests/abc259/tasks/abc259_b
+
+模範解答：https://atcoder.jp/contests/abc259/submissions/36560696
+
+import java.util.*;
+public class Main {
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+      	int b = sc.nextInt();
+     	int d = sc.nextInt();
+        
+        System.out.print(a*Math.cos(Math.toRadians(d))-b*Math.sin(Math.toRadians(d)));
+        System.out.print(" ");
+        System.out.print(a*Math.sin(Math.toRadians(d))+b*Math.cos(Math.toRadians(d)));
+    }
+}
+
+math : https://docs.oracle.com/javase/jp/8/docs/api/java/lang/Math.html

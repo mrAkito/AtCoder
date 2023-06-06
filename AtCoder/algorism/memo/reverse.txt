@@ -1,0 +1,20 @@
+import java.util.*;
+
+public class Main {
+    public static String reverse(String source){
+        StringBuffer dest = new StringBuffer();
+        for(int i = source.length()-1; i >= 0; i--){
+            dest.append(source.charAt(i));
+        }
+        return dest.toString();
+    }
+
+    public static void main(String[] args) {
+        try(Scanner scan = new Scanner(System.in)){
+            String s = scan.nextLine();
+            System.out.println(reverse(s));
+        }
+    }
+}
+
+http://shopping2.gmobb.jp/htdmnr/www08/java01/sortwords/sortwords.html

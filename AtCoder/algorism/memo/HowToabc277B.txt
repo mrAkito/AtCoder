@@ -1,0 +1,49 @@
+問題：https://atcoder.jp/contests/abc277/tasks/abc277_b
+ソース：https://atcoder.jp/contests/abc277/submissions/36420927
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		boolean ans = true;
+		String first = "HDCS";//一文字目の確認
+		String second = "A23456789TJQK";//二文字目の確認
+		Set<String> set = new HashSet<String>();//詳細下記
+		int N = sc.nextInt();
+		for (int i = 0; i < N; i++) {
+			String S = sc.next();
+			if (set.contains(S)) ans = false;//重複があるかどうかの確認
+			set.add(S);
+			if (!first.contains(String.valueOf(S.charAt(0))) || !second.contains(String.valueOf(S.charAt(1)))) {
+				ans = false;
+			}
+			/*if文前半では、first.contains(String.valueOf(S.charAt(0)))でString型firstと標準入力から受け取ったSの一文字目が一致するかどうかの確認処理（頭の「！」で否定なので一致しない場合にif文内部の処理が行われる）*/
+			/*if文後半では、second.contains(String.valueOf(S.charAt(1))))でString型secondと標準入力から受け取ったsの二文字目が一致するかどうかの確認処理（頭の「！」で否定なので一致しない場合にif文内部の処理が行われる）*/
+			/*charAtで文字をchar型で切り取ってくるためString.valueOfを使うことでString型に変換することで比較可能にしている*/
+		}
+		System.out.println(ans == true ? "Yes" : "No");
+	}
+}
+
+不明記号＜＞について
+＜＞はジェネリクス。型に依存しないプログラミングを実現するための方法
+https://java-code.jp/228
+
+各種関数について
+HashSet:https://java-code.jp/228
+要素の重複を許可しない集合構造
+
+Set：https://it-kyujin.jp/article/detail/1366/
+set.contains：contains(指定した要素)で指定した要素がある場合はtrueを返す。
+
+Set<String> set = new HashSet<String>();
+上記はHashSetデータの基本構文であり、HashSet<データ型> 変数名 = new HashSet<データ型>();の書き方もある。
+
+valueOfメソッドについて：引数に指定した様々な型の形をString型の文字列として返すことができる。
+https://qiita.com/mzmz__02/items/f15925c2295781d12003
+
+charAtメソッドについて：指定位置に取得したい文字の位置を入れることで1文字取得できる
+戻り値がchar型で帰ってくる
+https://magazine.techacademy.jp/magazine/34612

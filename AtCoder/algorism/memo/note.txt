@@ -1,0 +1,548 @@
+文字列を切り出すときのsubstringメソッド
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String line = sc.nextLine();
+        String result = line.substring(0,3);
+        System.out.println(result);
+    }
+}
+
+nextメソッドが空白まで読み取り
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        // 自分の得意な言語で
+        // Let's チャレンジ！！
+        Scanner sc = new Scanner(System.in);
+        int num1 = sc.nextInt();
+        int num2 = sc.nextInt();
+        System.out.println(num1 % num2);
+    }
+}
+
+String.formatで数値を文字として出力
+public class Main {
+    public static void main(String args[]) {
+      int num = 1;
+      String str = String.format("変数numには %d が代入されています。", num);
+      System.out.println(str);
+    }
+}
+
+ABC 276 a
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        try(Scanner scan = new Scanner(System.in)){
+            String str = scan.next();
+            int index = -1;
+            for(int i= 0; i < str.length(); i++){
+                if(str.charAt(i) == 'a'){
+                    index = i + 1;
+                }
+            }
+            System.out.println(index);
+        }
+    }
+}
+
+三項演算子
+https://www.javadrive.jp/start/ope/index13.html
+
+
+
+
+ABC274B二次元配列の扱い
+https://atcoder.jp/contests/abc274/submissions/36202216
+
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int h = sc.nextInt();  
+    int w = sc.nextInt();
+    int[] X = new int[w];
+
+    String[][] grid = new String[h][w];
+    for(int i=0;i<h;i++) {
+      String column =  sc.next();
+      for(int j=0;j<w;j++) {
+        grid[i][j] = column.substring(j,j+1);
+        if(grid[i][j].equals("#")) {
+          X[j]++;
+        }
+      }
+    }
+
+    for(int i=0;i<w;i++) {
+      System.out.print(X[i]+" ");
+    }
+  }
+}
+
+配列について
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] score = new int[7];
+        int sum = 0;
+        int ans;
+        int line;
+        Scanner sc = new Scanner(System.in);
+        for(int i = 0; i < 7; i++){
+            score[i] = sc.nextInt();
+        }
+        for(int i = 0; i < 7; i++){
+            sum += score[i];
+        }
+        line = sc.nextInt();
+        ans = sum / 7;
+        //System.out.println(ans);
+        System.out.println(ans >= line ? "pass\n" : "failure\n");
+    }
+}
+
+クラスの作成、オブジェクトの使い方、作り方
+import java.util.*;
+
+class Car{
+    int no;
+    int speed;
+
+    void setNo(int n){
+        no = n;
+    }
+
+    void run(int s){
+        speed = s;
+    }
+    void stop(){
+        speed = 0;
+    }
+
+    void display(){
+        System.out.println(no + " " + speed);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Car c1 = new Car();
+        try(Scanner scan = new Scanner(System.in)){
+            int n1 = scan.nextInt();
+            int n2 = scan.nextInt();
+            c1.setNo(n1);
+            c1.run(n2);
+            c1.display();
+            c1.stop();
+            c1.display();
+        }
+    }
+}
+
+横並びで出力したいときはprintlnではなくprintを使う
+出力ごとにスペース区切りなどはされないためif文などで工夫が必要
+
+
+文字列の多次元配列の作成方法
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        try(Scanner scan = new Scanner(System.in)){
+            int w = scan.nextInt();
+            int h = scan.nextInt();
+            String[][] str = new String[h][w];
+            
+            for(int i = 0; i < h; i++){
+                str[i][0] = scan.next(); 
+            }
+            for(int i = 0; i < h; i++){
+                System.out.println(str[i][0]);
+            }
+        }
+    }
+}
+
+
+paizaを解いたときの解法
+import java.util.*;
+class compare{
+    private int max = 0;
+    private int base;
+
+    int MAX(int[] array){
+        for(int i = 0; i < array.length; i++){
+            if(max < array[i]) max = array[i];
+        }
+        return max;
+    }
+
+    void SetBase(int n){
+        base = n;
+    }
+
+    int MIN(int[] array){
+        for(int i = 0; i < array.length; i++){
+            if(base > array[i]) base = array[i];
+        }
+        return base;
+    }
+}
+//How to use class compare
+//menber arg: max, base
+//max and basewill be used compared opponent number 
+//method: MAX, SetBase, MIN
+//MAX will be received a array of int type and, if oppent number is higher than max, assign arg:max the opponent number repeat length of array by using "for". After calcurating, return max(max number).
+//SetBase will be receive a number of int type, then assign base arg the received number
+//MIN will be received a array of int type and, if oopent number is lower than base, assign arg:min the opponent number repeat lengthof array by using "for". After calcurating, return base(min number).
+//ATTINTION: This Class is Only Used type of "int".
+
+class flowArray{
+    private int elementNum;
+
+    void SetLoopNum(int n){
+        elementNum = n;
+        //System.out.println(elementNum);
+    }
+
+    void ArrayDisplay(String[] str){
+        for(int i = 0; i < elementNum; i++){
+            System.out.println(str[i]);
+        }
+    }
+
+    void ArrayDisplay(int[] list){
+        for(int i = 0; i < elementNum; i++){
+            System.out.println(list[i]);
+        }
+    }
+}
+//How to use class flowArray
+//menber arg: elementNum will be assigned amount of array's element
+//method: setLoopNum, StringArrayDisplay
+//setLoopNum will receive loop arg for StringArrayDisplay
+//StringArrayDisplay will receive String type arg then move it. Its moving is that display from array[0] to array[elementNum] by using "for".
+//ATTINTION: enter new line between display one and display next.
+//Adding:ArrayuDisplay method type of int[](22/11/13)
+
+class Monster{
+    private String name;
+    private int minatk;
+    private int maxatk;
+    private int mindef;
+    private int maxdef;
+    private int minspd;
+    private int maxspd;
+    int cnt = 0;
+    void evolution(int[] now, String str, int[] array){
+        name = str;
+        minatk = array[0];
+        maxatk = array[1];
+        mindef = array[2];
+        maxdef = array[3];
+        minspd = array[4];
+        maxspd = array[5];
+        if(minatk <= now[0] && now[0] <= maxatk){
+            if(mindef <= now[1] && now[1] <= maxdef){
+                if(minspd <= now[2] && now[2] <= maxspd){
+                    System.out.println(name);
+                    cnt++;
+                }
+            }
+        }
+    }
+    void noEvolution(){
+        if(cnt == 0) System.out.println("no evolution\n");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Monster m1 = new Monster();
+        try(Scanner scan = new Scanner(System.in)){
+            //input start
+            int[] now = new int[3];
+            for(int i = 0; i < 3; i++){
+                now[i] = scan.nextInt();
+            }
+            int n = scan.nextInt(); 
+            String name;
+            int[] data = new int[6];
+            for(int j = 0; j < n; j++){
+                name = scan.next();
+                for(int i = 0; i < 6; i++) data[i] = scan.nextInt();
+                m1.evolution(now, name, data);
+            }
+            m1.noEvolution();
+        }
+    }
+}
+
+
+
+数珠順列
+77line エラー
+import java.util.*;
+class compare{
+    private int max = 0;
+    private int base;
+
+    int MAX(int[] array){
+        for(int i = 0; i < array.length; i++){
+            if(max < array[i]) max = array[i];
+        }
+        return max;
+    }
+
+    void SetBase(int n){
+        base = n;
+    }
+
+    int MIN(int[] array){
+        for(int i = 0; i < array.length; i++){
+            if(base > array[i]) base = array[i];
+        }
+        return base;
+    }
+}
+//How to use class compare
+//menber arg: max, base
+//max and basewill be used compared opponent number 
+//method: MAX, SetBase, MIN
+//MAX will be received a array of int type and, if oppent number is higher than max, assign arg:max the opponent number repeat length of array by using "for". After calcurating, return max(max number).
+//SetBase will be receive a number of int type, then assign base arg the received number
+//MIN will be received a array of int type and, if oopent number is lower than base, assign arg:min the opponent number repeat lengthof array by using "for". After calcurating, return base(min number).
+//ATTINTION: This Class is Only Used type of "int".
+
+class flowArray{
+    private int elementNum;
+
+    void SetLoopNum(int n){
+        elementNum = n;
+        //System.out.println(elementNum);
+    }
+
+    void ArrayDisplay(String[] str){
+        for(int i = 0; i < elementNum; i++){
+            System.out.println(str[i]);
+        }
+    }
+
+    void ArrayDisplay(int[] list){
+        for(int i = 0; i < elementNum; i++){
+            System.out.println(list[i]);
+        }
+    }
+}
+//How to use class flowArray
+//menber arg: elementNum will be assigned amount of array's element
+//method: setLoopNum, StringArrayDisplay
+//setLoopNum will receive loop arg for StringArrayDisplay
+//StringArrayDisplay will receive String type arg then move it. Its moving is that display from array[0] to array[elementNum] by using "for".
+//ATTINTION: enter new line between display one and display next.
+//Adding:ArrayuDisplay method type of int[](22/11/13)
+
+public class Main {
+
+    static boolean nextPerm(char[] p, int n, int r){
+        int i, j;
+        char t;
+
+        if(r <= 0 || n < r){
+            return false;
+        }
+        for(i = r + 1; i <= n-1; i++){
+            for(j = i; j >= r+1 && p[j-1] < p[j]; j--){
+                t = p[j];
+                p[j] = p[j-1];
+                p[j-1] = t;
+            }
+        }
+        for(i = n-1; i > 0 && p[i-1] >= p[i]; i--){
+            if(i == 0){
+                return false;
+            }
+        }
+        for(j = n-1; j > i && p[i-1] >= p[j]; j--){
+            t = p[j];
+            p[j] = p[i-1];
+            p[i-1] = t;
+        }
+        for(j = n-1; i < j; i++, j--){
+            t = p[i];
+            p[i] = p[i];
+            p[j] = t;
+        }
+        return true;
+    }
+
+    static String strRev(String s){
+        char[] c=s.toCharArray();
+        char t;
+
+        for(int i = 0 ,j=s.length()-1; i < j; i++, j--){
+            t = c[i];
+            c[i] = c[j];
+            c[j] = t;
+        }
+        return(new String(c));
+    }
+    public static void main(String[] args) {
+        try(Scanner scan = new Scanner(System.in)){
+            //input start
+            int n = scan.nextInt();
+            String str = scan.nextLine();
+            int r = n;
+            char[] p = str.toCharArray();
+            String s = "";
+            boolean flag = false;
+
+            Arrays.sort(p);
+            do{
+                String t = new String(p);
+                if(!s.contains(t)){
+                 //System.out.println(t);
+                System.out.println(t.substring(n)+t.substring(0,n));
+                s+=t+t+"|";
+                t=strRev(t);
+                s+=t+t+"|";
+                }
+            }while(nextPerm(p,n,r));
+            flag = nextPerm(p, n, r);
+            System.out.println(flag == true ? "Yes" : "No");
+        }
+    }
+}
+
+
+import java.lang.reflect.Array;
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        try(Scanner sc = new Scanner(System.in)){
+            int[] num = new int[4];
+            int max = 0;
+            int min = 10;
+            int ans = 0;
+            ArrayList<Integer> array = new ArrayList<>();
+            for(int i = 0; i < 4; i++){
+                num[i] = sc.nextInt();
+                array.add(num[i]);
+            } 
+            for(int i = 0; i < 4; i++){
+                if(max < num[i]){
+                    max = num[i];
+                }
+            }
+            array.remove(array.indexOf(max));
+            for(int i = 0; i < 4; i++){
+                if(min > num[i]){
+                    min = num[i];
+                }
+            }
+            array.remove(array.indexOf(min));
+            ans += max*10 + min;
+            if(array.get(0) >= array.get(1)){
+                ans += array.get(0) * 10+array.get(1);
+            }else{
+                ans += array.get(1) * 10+array.get(0);
+            }
+            System.out.println(ans);
+        }
+    }
+}
+
+https://atcoder.jp/contests/abs/tasks/abc083_b
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        try(Scanner sc = new Scanner(System.in)){
+            int n = sc.nextInt();
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            int ans = 0;
+
+            for(int i = 0; i <= n; i++){
+                int copy = i;
+                int tempSum = 0;
+                while(copy > 0){
+                    tempSum += copy % 10;
+                    copy /= 10;
+                }
+                if(a <= tempSum && tempSum <= b){
+                    ans += i;
+                }
+            }
+            System.out.println(ans);
+        }
+    }
+}
+
+
+ex) Using java for getting data from mysql
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try{
+            con = DriverManager.getConnection("jdbc:mysql://localhost/family?useSSL=false", "root", null);
+
+            pstmt = con.prepareStatement("select * from person");
+
+            rs = pstmt.executeQuery();
+
+            while(rs.next()){
+                System.out.println(rs.getString("last_name"));
+                System.out.println(rs.getInt("age"));
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            if(rs != null){
+                try{
+                    rs.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(pstmt != null){
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if(con != null){
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+}
+
+
+api key
+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

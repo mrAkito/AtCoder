@@ -1,0 +1,14 @@
+文字列の引数を符号付き10進数んも整数型として変換する
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        try(Scanner scan = new Scanner(System.in)){
+            String src = scan.next();
+            int num = Integer.parseInt(src, 2);
+            System.out.println(num+"\n");
+        }
+    }
+}
+https://www.javadrive.jp/start/string/index12.html
+http://simplesandsamples.com/bin2dec.java.html

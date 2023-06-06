@@ -1,0 +1,124 @@
+問題：https://atcoder.jp/contests/abc277/tasks/abc277_c
+
+解答　２例
+模範解答：https://atcoder.jp/contests/abc277/submissions/36438908
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Main {
+	static int Fmax = 1;
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		HashMap<Integer,Floor> Floors = new HashMap<Integer,Floor>();
+		
+		int N=scan.nextInt();
+		for(int i=0;i<N;i++) {
+			int A=scan.nextInt();
+			int B=scan.nextInt();
+			
+			if(!Floors.containsKey(A))
+				Floors.put(A,new Floor(A));
+			if(!Floors.containsKey(B))
+				Floors.put(B,new Floor(B));
+			
+			Floors.get(A).LadderTo.add(Floors.get(B));
+			Floors.get(B).LadderTo.add(Floors.get(A));
+		}		
+		
+		if(Floors.containsKey(1))
+			search (Floors.get(1));
+
+		System.out.println (Fmax);
+	}
+	static void search(Floor F){
+		if(F.visited)
+			return;
+		else
+			F.visited=true;
+		
+		if(F.f > Fmax)
+			Fmax=F.f;
+		for(Floor nextFloor:F.LadderTo)
+			search(nextFloor);		
+	}
+}
+
+class Floor{
+	int f;
+	ArrayList<Floor> LadderTo;
+	boolean visited;
+	Floor(int f){
+		this.f=f;
+		LadderTo = new ArrayList<Floor>();
+		visited = false;
+	}
+}
+
+
+HashMapについて：
+https://www.javadrive.jp/start/collection/index3.html
+
+Mapインターフェースについて：
+https://docs.oracle.com/javase/jp/8/docs/api/java/util/Map.html
+
+書き方など：
+https://camp.trainocate.co.jp/magazine/java-map/
+
+
+模範解答：https://atcoder.jp/contests/abc277/submissions/36443012
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+
+public class Main {
+	private static Set<Integer> visited;
+	private static Map<Integer, List<Integer>> map = new HashMap<>();
+	private static int max = 1;
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		for (int i = 0; i < n; i++) {
+			int a = sc.nextInt();
+			int b = sc.nextInt();
+			if (map.get(a) == null) {//もしキー「a」が空欄ならば
+				ArrayList<Integer> list = new ArrayList<>();
+				list.add(b);//ArrayList listにbを追加する
+				map.put(a, list);//ここわからん
+			} else {//キー「a」が空欄でないならば
+				map.get(a).add(b);//「a」に紐づけられた
+			}
+			if (map.get(b) == null) {
+				ArrayList<Integer> list = new ArrayList<>();
+				list.add(a);
+				map.put(b, list);
+			} else {
+				map.get(b).add(a);
+			}
+		}
+
+		visited = new HashSet<>();
+		move(1);
+
+		System.out.println(max);
+	}
+
+	private static void move(int floor) {
+		if (map.get(floor) == null) {
+			return;
+		}
+		for (Integer i : map.get(floor)) {
+			if (!visited.contains(i)) {
+				max = Math.max(max, i);
+				visited.add(i);
+				move(i);
+			}
+		}
+	}
+}
