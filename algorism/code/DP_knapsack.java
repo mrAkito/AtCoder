@@ -1,6 +1,5 @@
 //https://www.momoyama-usagi.com/entry/info-algo-dp#2-3
-
-import java.util.EnumSet;
+package algorism.code;
 
 public class DP_knapsack {
 

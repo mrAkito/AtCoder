@@ -1,3 +1,5 @@
+package algorism.code;
+
 import java.util.*;
 
 public class DFS{
